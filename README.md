@@ -1,39 +1,37 @@
-# Day 17
+## Exercise
 
-There are separate branches for Segment 1 and Segment 2 in this repository. Both segments include two things:
+Create an npm script that creates a boilerplate for React/Redux project similar to the one used for our React/Redux exercises.
 
-1) Coding exercises
+  1) `pesto-react-boilerplate` command in the command line should initiate a script that creates a project boilerplate.
+    
+    2) Before [create-react-app](https://github.com/facebook/create-react-app/) is initiated, there should be a few prompts for the user:
+        - Do you want to set up testing with enzyme?
 
-2) Written/Multiple Choice questions
+          - If user selects `yes`, install [enzyme](https://github.com/airbnb/enzyme).
+          - Create a `setupTests.js` in `src` directory. Write the code for react enzyme adapter to it.
+          - Create a `__tests__` directory in the root of the project.
 
-The reason for two separate branches for two segments is to have separate test suites run on travis CI.
+        - Do you want to add Redux?
 
-### Instructions:
+          - If user selects `yes`, install [redux](https://github.com/reduxjs/redux) and [react-redux](https://github.com/reduxjs/react-redux).
 
-1) Clone this repo using
-  ```
-    git clone <link to repo>
-  ```
+          - Do you want to add redux devtools?
+          
+              - If `yes`, install [redux devtools](https://github.com/zalmoxisus/redux-devtools-extension)
 
-2) Change directory
-  ```
-    cd <Folder Name>
-  ```
+        - Do you want to add [React Router](https://github.com/ReactTraining/react-router)?
 
-3) Install dependencies
-  ```
-    yarn
-  ```
+          - If `yes`, install react router.
 
-4) To do the exercises in branch `segment-1`
-  ```
-    git checkout -b segment-1
-    git pull origin segment-1
-  ```
+        - Install
+          - `eslint`
+          - `babel-eslint`
+          - `eslint-config-airbnb`
+          - `eslint-plugin-import`
+          - `eslint-plugin-jsx-a11y`
+          - `eslint-plugin-react`
 
-5) Do your work and then push to the branch
-  ```
-    git add .
-    git commit -m "your commit message"
-    git push origin segment-1
-  ```
+        - Create an `.eslintrc` file and write a basic config into it.
+
+
+The best way to do this would be to prompt the user with all the questions at once in the beginning and then installing everything required in one go. All the best :)
