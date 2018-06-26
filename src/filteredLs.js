@@ -12,18 +12,21 @@
 */
 
 const fs = require('fs');
-// const path = require('path');
+const path = require('path');
 
-const pathToDirnow = '/home/aditya/Downloads';
-const filterbyThisnow = '.js';
+// const pathToDirnow = '/home/aditya/Downloads';
+// const filterbyThisnow = '.js';
+const filtered = extension => (file) => {
+  const ext = path.extname(file);
+  //   console.log(ext);
+  return ext === `.${extension}`;
+};
 
-function filteredLs(pathToDir, filterbyThis) {
-  fs.readdir(pathToDir, (err, items) => {
-    items.filter(ele => filterbyThis.test(ele));
-    items.forEach((element) => {
-      console.log(element);
-    });
-  });
-}
-filteredLs(pathToDirnow, filterbyThisnow);
-module.exports = () => {};
+const filteredLs = (pathToDir, filterbyThis) => {
+  const files = fs.readdirSync(path.resolve(pathToDir));
+  const items = files.filter(filtered(filterbyThis));
+  return items;
+};
+
+// filteredLs(pathToDirnow, filterbyThisnow);
+module.exports = filteredLs();
