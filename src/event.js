@@ -15,8 +15,25 @@
 */
 
 // Un-comment the function below
+const events = require('events');
 
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+// Create an event handler:
+const eventEmitter = new events.EventEmitter();
+
+const listner1 = function listner1(name) {
+  console.log(`Hello ${name}`);
+};
+// listener #2
+const listner2 = function listner2() {
+  throw new Error('Enter a string please');
+};
+eventEmitter.on('greet', listner1);
+eventEmitter.on('error', listner2);
+
+function greet(name) {
+  if (typeof name !== 'string') eventEmitter.emit('error');
+  else eventEmitter.emit('greet', name);
+}
+
+greet('Pesto');
+greet(123);
