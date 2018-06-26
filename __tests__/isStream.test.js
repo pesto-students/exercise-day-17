@@ -1,5 +1,5 @@
-import Stream from 'stream';
-import net from 'net';
+const Stream = require('stream');
+const net = require('net');
 
 const isStream = require('../src/isStream');
 
