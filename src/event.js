@@ -40,5 +40,5 @@ function emitEvent(name) {
   greet(name);
 }
 
-emitEvent(2);
+emitEvent('Name');
 

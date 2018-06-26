@@ -21,7 +21,6 @@ describe('httpServer', () => {
     it('should say "Pesto Bootcamp!"', (done) => {
       http.get('http://localhost:3000', (res) => {
         let data = '';
-
         res.on('data', (chunk) => {
           data += chunk;
         });
