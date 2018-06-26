@@ -9,7 +9,7 @@ const request = require('request');
 
 const bitcoinTicker = ({ limit } = { limit: 10 }) =>
   new Promise((resolve, reject) => {
-    request.get(`https://api.coinmarketcap.com/v2/ticker/?limit=${limit}`, (err, response, body) => {
+    request.get(`https://api.coinmarketcap.com/v2/ticker/?limit=${limit}&sort=rank`, (err, response, body) => {
       if (err) {
         reject(err);
       }
@@ -17,11 +17,11 @@ const bitcoinTicker = ({ limit } = { limit: 10 }) =>
     });
   });
 
-
 // (async () => {
 //   const response = await bitcoinTicker({
 //     limit: 10,
 //   });
+//   console.log(response);
 // })();
 
 module.exports = bitcoinTicker;
