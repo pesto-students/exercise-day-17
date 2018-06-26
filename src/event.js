@@ -16,7 +16,17 @@
 
 // Un-comment the function below
 
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+const eventEmitter = require('events');
+
+class Emitter extends eventEmitter {}
+
+const myEvent = new Emitter();
+myEvent.on('error', () => console.log('Error: Enter a string please!'));
+myEvent.on('greet', name => console.log(`hello ${name}`));
+
+function greet(name) {
+  if (typeof name !== 'string') myEvent.emit('error');
+  else myEvent.emit('greet', name);
+}
+
+greet('123');
