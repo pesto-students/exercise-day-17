@@ -3,13 +3,18 @@
 const http = require('http');
 
 const server = http.createServer((request, response) => {
-  response.write('Response from server!');
-  response.end();
+  response.writeHead(200, {
+    'Content-Type': 'text/html',
+  });
+
+  // response.write();
+  const responseMessage = 'Pesto Bootcamp!\n';
+  response.end(responseMessage);
 });
 
-const port = 8000;
-server.listen(port, () => {
-  console.log(`Server is listening on port: ${port}`);
-});
+// const port = 3000;
+// server.listen(port, () => {
+//   console.log(`Server is listening on port: ${port}`);
+// });
 
 module.exports = server;
