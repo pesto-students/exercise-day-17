@@ -11,7 +11,18 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
+const fs = require('fs');
 // const path = require('path');
 
-module.exports = () => {};
+const filteredLs = (dir, ext) => {
+  const result = [];
+  fs.readdirSync(dir).forEach((file) => {
+    const end = file.split('.');
+    if (end[1] === ext) {
+      result.push(file);
+    }
+  });
+  return result;
+};
+
+module.exports = filteredLs;

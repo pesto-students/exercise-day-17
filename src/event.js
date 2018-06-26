@@ -15,8 +15,24 @@
 */
 
 // Un-comment the function below
+const events = require('events');
 
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+const myEvent = new events.EventEmitter();
+
+const onFailure = () => {
+  throw new Error('Enter a string please!');
+};
+
+const onSuccess = (name) => {
+  console.log(`Hello ${name}`);
+};
+
+myEvent.on('greet', onSuccess);
+myEvent.on('error', onFailure);
+
+function greet(name) {
+  if (typeof name !== 'string') myEvent.emit('error');
+  else myEvent.emit('greet', name);
+}
+
+greet('Navneet');
