@@ -11,7 +11,22 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = () => {};
+// const pathToDirnow = '/home/aditya/Downloads';
+// const filterbyThisnow = '.js';
+const filtered = extension => (file) => {
+  const ext = path.extname(file);
+  //   console.log(ext);
+  return ext === `.${extension}`;
+};
+
+const filteredLs = (pathToDir, filterbyThis) => {
+  const files = fs.readdirSync(path.resolve(pathToDir));
+  const items = files.filter(filtered(filterbyThis));
+  return items;
+};
+
+// filteredLs(pathToDirnow, filterbyThisnow);
+module.exports = filteredLs();
