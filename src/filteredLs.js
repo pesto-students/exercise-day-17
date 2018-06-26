@@ -11,7 +11,15 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
+const fs = require('fs');
 // const path = require('path');
 
+
+const filteredLs = (source, extension) => {
+  fs.readdir(source, (err, files) => {
+    files.filter(file => file.slice(-3) === extension).sort();
+  });
+};
+
+filteredLs('/src', 'txt');
 module.exports = () => {};
