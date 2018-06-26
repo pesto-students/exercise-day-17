@@ -4,6 +4,10 @@
 
   You can use this api: https://api.coinmarketcap.com/v2/ticker/
 */
-// const http = require('http');
+const fetch = require('request');
 
-module.exports = () => {};
+fetch('https://api.coinmarketcap.com/v2/ticker/?limit=10', (error, response, body) => {
+  console.log('error:', error);
+  console.log('statusCode:', response && response.statusCode);
+  console.log('body:', body);
+});
