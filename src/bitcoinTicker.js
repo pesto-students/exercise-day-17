@@ -4,6 +4,16 @@
 
   You can use this api: https://api.coinmarketcap.com/v2/ticker/
 */
-// const http = require('http');
+const http = require('http');
+
+const cryptoTicker = () => {
+  http.get('http://api.coinmarketcap.com/v2/ticker/', () => {
+    console.log('inside request');
+    // console.log(res.socket);
+  });
+};
+
+cryptoTicker();
+
 
 module.exports = () => {};
