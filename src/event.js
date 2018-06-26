@@ -14,9 +14,23 @@
   // => Error: Enter a string please!
 */
 
+const events = require('events');
+
+const myEvent = new events.EventEmitter();
+
+myEvent.addListener('greeting', (name) => {
+  console.log(`hello ${name}`);
+});
+
+myEvent.on('error', (err) => {
+  throw new Error(err);
+});
+
 // Un-comment the function below
 
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+function greet(name) {
+  if (typeof name !== 'string') myEvent.emit('error');
+  else myEvent.emit('greeting', name);
+}
+greet('kundan');
+greet(null);
