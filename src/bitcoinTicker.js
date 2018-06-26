@@ -19,8 +19,9 @@ function bitcoinTicker() {
   //     console.log(JSON.parse(data));
   //   });
   // });
-  return fetch('https://api.coinmarketcap.com/v2/ticker/')
-    .then(res => res.json());
-  // .then(body => body);
+  return fetch('https://api.coinmarketcap.com/v2/ticker/?limit=10&sort=id')
+    .then(res => res.json())
+    .then(body => body);
 }
+// bitcoinTicker();
 module.exports = bitcoinTicker;
