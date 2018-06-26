@@ -15,8 +15,21 @@
 */
 
 // Un-comment the function below
+const events = require('events');
 
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+const eventEmitter = new events.EventEmitter();
+var name = function(greetName){
+  console.log("Hello"+name);
+}
+
+
+
+const myEventHandler = function () {
+  console.log('Heyy');
+};
+eventEmitter.on('greet', myEventHandler);
+function greet(name) {
+  if (typeof name !== 'string') myEventHandler.emit('error');
+  else myEventHandler.emit('greet', name);
+}
+eventEmitter.emit(greet('Amal'));
