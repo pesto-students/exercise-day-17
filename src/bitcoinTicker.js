@@ -8,7 +8,7 @@
 const fetch = require('node-fetch');
 
 // const http = require('http');
-function bitcoin() {
+function bitcoinTicker() {
   return fetch('https://api.coinmarketcap.com/v2/ticker/')
     .then(res => res.json())
     .then((body) => {
@@ -16,4 +16,4 @@ function bitcoin() {
       return { data: key };
     });
 }
-module.export = bitcoin;
+module.exports = bitcoinTicker;
