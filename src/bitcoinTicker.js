@@ -7,12 +7,12 @@
 // const http = require('http');
 const fetch = require('node-fetch');
 
-function ticker() {
+function ticker({ limit }) {
   return fetch('https://api.coinmarketcap.com/v2/ticker/')
     .then(res => res.json())
     .then((response) => {
       const values = Object.values(response.data);
-      const top10Crypto = values.filter(crypto => crypto.rank <= 10)
+      const top10Crypto = values.filter(crypto => crypto.rank <= limit)
         .sort((a, b) => {
           if (a.rank > b.rank) {
             return 1;

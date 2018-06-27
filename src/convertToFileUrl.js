@@ -10,5 +10,4 @@ const convertToFileUrl = (pathname) => {
 };
 
 convertToFileUrl('/Users/pesto/dev/te^st.jpg');
-
 module.exports = convertToFileUrl;
