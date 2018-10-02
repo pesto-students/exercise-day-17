@@ -10,4 +10,4 @@
   //=> 'foo\nbar\n'
 */
 
-module.exports = () => {};
+module.exports = strOrBuf => strOrBuf.toString('utf-8').replace(/(\r|\n$)/g, '');
