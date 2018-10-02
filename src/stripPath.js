@@ -18,6 +18,7 @@ module.exports = (p1, p2) => {
     str2 = path.normalize(p2);
   } catch (e) {
     str2 = '';
+    return str1.substr(0, str1.length);
   }
   return str1.substr(str2.length + 1, str1.length - 1);
 };
