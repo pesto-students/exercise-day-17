@@ -3,6 +3,19 @@
   formatted JSON object.
 */
 
-// const path = require('path');
+const fs = require('fs');
 
-module.exports = () => {};
+function objFromKeyValArrays(keyArr, valArr) {
+  const ret = {};
+  for (let i = 0; i < keyArr.length; i += 1) {
+    ret[keyArr[i]] = valArr[i];
+  }
+  return ret;
+}
+
+module.exports = (file) => {
+  const lines = fs.readFileSync(file, 'utf-8').split('\n');
+  const headings = lines.shift().split(',');
+
+  return lines.map(line => objFromKeyValArrays(headings, line.split(',')));
+};
