@@ -13,10 +13,17 @@
   greet(123);
   // => Error: Enter a string please!
 */
+const EventEmitter = require('events');
 
-// Un-comment the function below
-
-// function greet(name) {
-//   if (typeof name !== 'string') myEvent.emit('error');
-//   else myEvent.emit('greet', name);
-// }
+module.exports = () => {
+  class MyEvent extends EventEmitter {}
+  const myEvent = new MyEvent();
+  myEvent.on('event', (name) => {
+    console.log(`hello ${name}`); // eslint-disable-line
+  });
+  // Un-comment the function below
+  function greet(name) {    // eslint-disable-line
+    if (typeof name !== 'string') myEvent.emit('Enter a string please!');
+    else myEvent.emit('greet', name);
+  }
+};
