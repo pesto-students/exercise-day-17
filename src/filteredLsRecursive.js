@@ -11,7 +11,24 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = () => {};
+module.exports = (dir, ext) => {
+  let dirsToProcess = [dir];
+  let selectedFiles = [];
+
+  while (dirsToProcess.length !== 0) {
+    const curDir = dirsToProcess.shift();
+    const fileOrDirNames = fs.readdirSync(curDir);
+
+    selectedFiles = selectedFiles.concat(fileOrDirNames
+      .filter(name => path.extname(name).substr(1) === ext));
+
+    dirsToProcess = dirsToProcess.concat(fileOrDirNames
+      .map(name => path.join(curDir, name))
+      .filter(fileOrDirpath => fs.statSync(fileOrDirpath).isDirectory()));
+  }
+
+  return selectedFiles;
+};
