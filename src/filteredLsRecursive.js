@@ -11,7 +11,24 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = () => {};
+const filteredLsRecursive = (loc, ext) => {
+  const files = fs.readdirSync(loc);
+  const filterFiles = [];
+  files.forEach((file) => {
+    if (path.extname(file).endsWith(ext)) {
+      filterFiles.push(file);
+    } else if (path.extname(file) === '') {
+      // filterFiles.push(...filteredLsRecursive(path.join(__dirname, loc, file), ext));
+      fs.lstat(path.join(__dirname, loc, file), (err, status) => {
+        console.log(err);
+        console.log(status);
+      });
+    }
+  });
+  return filterFiles;
+};
+
+module.exports = filteredLsRecursive;

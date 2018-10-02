@@ -9,7 +9,7 @@ describe('filteredLsRecursive', () => {
       'e.json',
       'f.json',
     ];
-    const actual = filteredLsRecursive(path.join(__dirname, '../src/Directory'), 'json');
+    const actual = filteredLsRecursive(path.join(__dirname, '../src/Directory/PuzzleStartsHere'), 'json');
     expect(actual.sort()).toEqual(expected);
   });
 });
