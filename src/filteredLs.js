@@ -11,7 +11,9 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
-// const path = require('path');
-
-module.exports = () => {};
+const fs = require('fs');
+// const path = require("path");
+// eslint-disable-next-line
+module.exports = (dir, ext) => fs.readdir(dir, (err, files) => {
+  files.filter(e => /json$/.test(e));
+});
