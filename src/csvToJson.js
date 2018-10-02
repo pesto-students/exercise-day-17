@@ -4,18 +4,9 @@
 */
 // [{}, {}, {}]
 // const path = require('path');
-const fs = require('fs');
-
-function test() {
-  const results = [];
-  fs.createReadStream('../avengers.csv')
-    .on('data', results.push)
-    .on('end', () => {
-      // console.log(data);
-      // [
-      //   { NAME: 'Daffy Duck', AGE: 24 },
-      //   { NAME: 'Bugs Bunny', AGE: 22 }
-      // ]
-    });
-}
-test();
+// const fs = require('fs');
+// eslint-disable-next-line
+module.exports = (file) => new Promise((resolve, reject) => {
+  // const csv = fs.readFileSync(file);
+  // csv.toString.split('\n')[1];
+});
