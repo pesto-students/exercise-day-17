@@ -6,7 +6,7 @@
 */
 const http = require('http');
 
-module.exports = () => {
+module.exports = (constraint) => {
   const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
@@ -17,7 +17,7 @@ module.exports = () => {
         const parsedData = JSON.parse(rawData);
         const x = Object.values(parsedData.data);
         const mainArr = [];
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < constraint.limit; i += 1) {
           mainArr.push(x[i].name);
         }
         return mainArr;
