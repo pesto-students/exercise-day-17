@@ -4,6 +4,18 @@
 
   You can use this api: https://api.coinmarketcap.com/v2/ticker/
 */
-// const http = require('http');
+const https = require('https');
 
-module.exports = () => {};
+const API = 'https://api.coinmarketcap.com/v2/ticker/';
+
+module.exports = () => new Promise((resolve) => {
+  https.get(API, (res) => {
+    res.setEncoding('utf-8');
+
+    let rawData = '';
+    res.on('data', (chunk) => {
+      rawData += chunk;
+    });
+    res.on('end', () => resolve(JSON.parse(rawData)));
+  });
+});
