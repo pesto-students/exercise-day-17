@@ -11,7 +11,11 @@
  * filteredLs('/src', 'txt');
 */
 
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = () => {};
+module.exports = (loc, ext) => {
+  const files = fs.readdirSync(loc);
+  const filterFiles = files.filter(file => path.extname(file).endsWith(ext));
+  return filterFiles;
+};
