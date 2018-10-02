@@ -4,6 +4,6 @@
 * similar to running cat file | wc -l.
 */
 
-// const fs = require('fs');
+const fs = require('fs');
 
-module.exports = () => {};
+module.exports = file => fs.readFileSync(file, 'utf-8').split('\n').length - 1;

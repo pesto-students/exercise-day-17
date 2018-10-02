@@ -6,4 +6,11 @@
 * Return a promise that is resolved with the number of lines
 */
 
-module.exports = () => {};
+const fs = require('fs');
+
+module.exports = file => new Promise((resolve, reject) => {
+  fs.readFile(file, 'utf-8', (err, data) => {
+    if (err) reject(err);
+    else resolve(data.split('\n').length - 1);
+  });
+});
