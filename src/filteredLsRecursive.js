@@ -15,17 +15,14 @@ const fs = require('fs');
 const path = require('path');
 
 const filteredLsRecursive = (loc, ext) => {
+  if (!fs.statSync(loc).isDirectory()) return [];
   const files = fs.readdirSync(loc);
   const filterFiles = [];
   files.forEach((file) => {
     if (path.extname(file).endsWith(ext)) {
       filterFiles.push(file);
     } else if (path.extname(file) === '') {
-      // filterFiles.push(...filteredLsRecursive(path.join(__dirname, loc, file), ext));
-      fs.lstat(path.join(__dirname, loc, file), (err, status) => {
-        console.log(err);
-        console.log(status);
-      });
+      filterFiles.push(...filteredLsRecursive(path.join(loc, file), ext));
     }
   });
   return filterFiles;
